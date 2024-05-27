@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IB Garage</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+        color: white;
+      }
+
+      header {
+        text-align: center;
+        padding: 20px 0;
+      }
+
+      .contact-info {
+          display: flex;
+          flex-wrap: wrap;
+          margin-bottom: 20px;
+      }
+
+      .contact-info > div {
+          flex: 1;
+          min-width: 300px;
+          padding: 10px;
+      }
+
+      .contact-info h2 {
+          width: 100%;
+          margin-bottom: 10px;
+      }
+
+      .contact-info table {
+          width: 100%;
+      }
+
+      .contact-info td {
+          vertical-align: top;
+          padding: 5px 0;
+      }
+
+      .contact-info td.icon {
+          width: 30px;
+      }
+
+      #map {
+        width: 100%;
+        height: 400px;
+        margin-top: 60px;
+        margin-bottom: 40px;
+      }
+
+      @media (max-width: 600px) {
+        .container {
+            padding: 10px;
+        }
+
+        #map {
+            height: 300px;
+        }
+
+        .polygon-divider {
+            height: 30px;
+        }
+
+        .contact-info {
+            flex-direction: column;
+        }
+    }
+
+      footer {
+        text-align: center;
+        padding: 20px;
+        background-color: #3a1e14;
+      }
+
+      .polygon-divider {
+        width: 100%;
+        height: 50px;
+        background: white;
+        clip-path: polygon(50% 100%, 0% 0%, 100% 0%);
+        margin-top: 20px;
+      }
+
+      .wrapper {
+        background-color: #3a1e14;
+      }
+
+      .branding-ltd {
+        display: none !important;
+      }
+      
+      a {
+        color: inherit;
+        text-decoration: inherit;
+      }
+
+    </style>
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCJ7Fa6JeEqIiXtQhkT9jGZFh7H7olxPN0&callback=initMap"
+      async
+      defer
+    ></script>
+    <script src="https://asset-tidycal.b-cdn.net/js/embed.js" async></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="tidycal-embed" data-path="ib-garage/itp"></div>
+    </div>
+    <div class="wrapper">
+      <div class="polygon-divider"></div>
+      <div class="container">
+        <section>
+          <section id="map"></section>
+          <section class="contact-info">
+            <div>
+              <table>
+                <tr>
+                    <td class="icon"><i class="fas fa-map-marker-alt"></i></td>
+                    <td>Arcus, str. Szechenyi Istvan nr. 5, Arcus, Romania</td>
+                </tr>
+                <tr>
+                    <td class="icon"><i class="fas fa-phone"></i></td>
+                    <td><a href="tel:+40 726 172 950">+40 726 172 950</a></td>
+                </tr>
+                <tr>
+                    <td class="icon"><i class="fas fa-envelope"></i></td>
+                    <td><a
+                      href="mailto:inczebarna@yahoo.com">inczebarna@yahoo.com</a></td>
+                </tr>
+            </table>
+          </div>
+          <div style="margin-top: 0; padding-top: 0;">
+              <p>Prin platforma pot efectua programări online la stație ITP IB Garage. Platforma oferă și posibilitatea de trimitere e-mailurile de expirare a ITP-ului clienților pe care stațiile ITP îi adaugă în baza de date. </p>
+              <p><i class="fab fa-facebook-f" style="padding-right: 20px;"></i><a
+                href="https://www.facebook.com/ibgarage/?locale=hu_HU"
+                target="_blank">Urmariți-ne pe Facebook</a></p>
+          </div>
+        </section>
+        <footer>
+          <p>&copy; <span id="current-year"></span> <strong>IB Garage SRL</strong>. Toate drepturile rezervate. Dezvoltat de <a
+            href="https://helixsoft.ro/"
+            target="_blank"><strong>HelixSoft</strong></a>.</p>
+        </footer>
+      </div>
+    </div>
+    <script>
+      function initMap() {
+        // The location of the headquarters
+        const headquarters = { lat: 45.89229202270508, lng: 25.795982360839844 }; // Replace with your actual coordinates
+        // The map, centered at the headquarters
+        const map = new google.maps.Map(document.getElementById("map"), {
+          zoom: 14,
+          center: headquarters,
+        });
+        // The marker, positioned at the headquarters
+        const marker = new google.maps.Marker({
+          position: headquarters,
+          map: map,
+        });
+      }
+
+      document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
